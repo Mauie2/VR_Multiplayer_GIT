@@ -17,18 +17,22 @@ public class BasicPUN : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-    
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Connect();
+        }
 
     }
 
     public void Connect()
     {
+
         if (PhotonNetwork.IsConnected)
         {
             Debug.Log("Joining Room...");
@@ -59,10 +63,12 @@ public class BasicPUN : MonoBehaviourPunCallbacks
 
         // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
+
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Game");
+        Debug.Log("haha fuck you");
+        PhotonNetwork.LoadLevel("EscapeRoom");
     }
 }
