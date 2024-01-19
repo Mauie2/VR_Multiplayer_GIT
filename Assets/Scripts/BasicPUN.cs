@@ -68,7 +68,7 @@ public class BasicPUN : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("haha fuck you");
+        if (PhotonNetwork.IsMasterClient)
         PhotonNetwork.LoadLevel("EscapeRoom");
     }
 }
